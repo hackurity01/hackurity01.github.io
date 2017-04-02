@@ -1,19 +1,19 @@
 # Site settings
-email: 
+email: "hackurity01@gmail.com" 
 baseurl: ""
 paginate: 5
 paginate_path: "/blog/page-:num"
 google_analytics: 
 
 # SEO settings
-title: Trophy
-description: 
-url: ""
+title: Hackurity
+description: "Hackurity's Blog"
+url: "hackurity01.github.io"
 twitter_username: 
 default_img: 
 
 # Profile settings
-name: 
+name: YuDongKyun
 profile_img: 
 profile: 
 social:
