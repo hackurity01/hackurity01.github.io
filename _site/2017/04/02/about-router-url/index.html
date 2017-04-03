@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>navication에서 router.url 사용시 / 만 나오는 문제 | Hackurity</title>
+  <meta name="author" content="YuDongKyun">
+  <meta name="description" content="Hackurity's Blog">
+  <meta property="og:title" content="navication에서 router.url 사용시 / 만 나오는 문제 | Hackurity">
+  <meta property="og:url" content="hackurity01.github.io/2017/04/02/about-router-url/">
+  <meta property="og:site_name" content="Hackurity">
+  <meta property="og:description" content="Hackurity's Blog">
+  <meta property="og:image" content="https://unsplash.it/2000/1200?random">
+  <meta property="og:type" content="blog">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="Hackurity's Blog">
+  <meta name="twitter:title" content="navication에서 router.url 사용시 / 만 나오는 문제 | Hackurity">
+  <meta name="twitter:url" content="hackurity01.github.io/2017/04/02/about-router-url/">
+  <meta name="twitter:site" content="Hackurity">
+  <meta name="twitter:creator" content="@">
+  <meta name="twitter:domain" content="hackurity01.github.io">
+  <meta property="twitter:image" content="https://unsplash.it/2000/1200?random">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Lora|Space+Mono:700">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <link rel="alternate" type="application/rss+xml" title="Hackurity" href="hackurity01.github.io/feed.xml">
+  <link rel="canonical" href="hackurity01.github.io/2017/04/02/about-router-url/">
+
+  
+</head>
+
+
+  <body>
+
+    <main>
+      <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="section-padding--lg mast rellax" data-rellax-speed="-4">
+    <a class="nav nav--white" href="/">
+      <i class="fa fa-lg fa-arrow-left"></i>
+      <span>Back to Posts</span>
+    </a>
+    <figure class="absolute-bg mast__img" style="background-image: url('https://unsplash.it/2000/1200?random');"></figure>
+    <div class="mast__container">
+      <span><time datetime="2017-04-02T00:00:00+09:00" itemprop="datePublished">Apr 2, 2017</time></span>
+      <h1 itemprop="name headline">navication에서 router.url 사용시 / 만 나오는 문제</h1>
+      
+        <span>Posted in 
+          
+            <a class="nav--white" href="/category/angular2">Angular2</a>
+          
+        </span>
+      
+      <span></span>
+    </div>
+  </header>
+
+  <section class="section-padding bg-grey" itemprop="articleBody">
+    <div class="post">
+      <p>router.url을 출력했는데 항상 / 값만 나오는 경우가 있다.</p>
+
+<p>app.component.html에 다음과 같이 코드를 구성한 경우,</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;navigation&gt;&lt;/navigation&gt;</span>
+<span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span></code></pre></figure>
+
+<p>navigation의 component에서 router.url을 사용하면 어느 페이지건 항상 결과값이 ‘/’ 값으로 나온다.</p>
+
+<p>한참 삽질을 해본 후의 결론은 이렇다.</p>
+
+<p><b>router.url은 해당 component가 위치한 곳의 url을 반환한다.</b>
+<br /><br /></p>
+<h3>해결방안</h3>
+<p><br /></p>
+<h4>1. document.location.href 사용</h4>
+<p>document.location.href를 사용하여 직접 주소창의 문자열을 가져와서 검사하는 방법이다.</p>
+
+<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="k">if</span><span class="p">((</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">).</span><span class="nx">search</span><span class="p">(</span><span class="s1">'/myurl'</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'It\'s myurl'</span><span class="p">);</span>
+<span class="k">else</span> 
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'It is not myurl'</span><span class="p">);</span></code></pre></figure>
+
+<h4>2. router.events 사용</h4>
+<p>구글링을 하다가 우연히 알아낸 방법인데, (순수한)javascript 문법을 사용하는게 싫다면 사용해 볼만한 방법이다.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">router</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+<p>router.events.subscribe를 사용하면 router 값이 변하는 때에 이벤트를 발생시키고 함수를 실행하게 되는데 이 함수 안에서 event.url을 사용하게 되면 router.url에 해당하는 값이 원하는 대로 잘 나온다.</p>
+
+
+    </div>
+  </section>
+
+  <section class="profile">
+    <div class="profile__card">
+      <div class="profile__img">
+        <figure class="absolute-bg" style="background-image: url('');"></figure>
+      </div>
+      <div class="profile__container">
+        <p></p>
+        
+          <ul class="profile__social">
+            
+              <li><a class="fa fa-lg fa-envelope-o" href="mailto:hackurity01@gmail.com"></a></li>
+            
+            
+              <li><a class="fa fa-lg fa-github" href="" target="_blank"></a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </section>
+
+</article>
+
+
+  <section class="next">
+    <a class="next__link" href="/2016/02/19/craft-beer/" style="background-image: url('https://unsplash.it/2000/1200?image=1003');">
+      <div class="next__container">
+        <span>Read Next</span>
+        <h2>Craft Beer</h2>
+      </div>
+    </a>
+  </section>
+
+
+    </main>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.0.0/rellax.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script type="text/javascript" src="/assets/js/app.js"></script>
+
+
+  </body>
+
+</html>
