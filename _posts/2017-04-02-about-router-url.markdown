@@ -44,3 +44,4 @@ router.events.subscribe(event => {
 ```
 router.events.subscribe를 사용하면 router 값이 변하는 때에 이벤트를 발생시키고 함수를 실행하게 되는데 이 함수 안에서 event.url을 사용하게 되면 router.url에 해당하는 값이 원하는 대로 잘 나온다.
 
+
