@@ -3,10 +3,10 @@
   <channel>
     <title>Hackurity</title>
     <description>Hackurity's Blog</description>
-    <link>hackurity01.github.io/</link>
-    <atom:link href="hackurity01.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 04 Apr 2017 01:02:20 +0900</pubDate>
-    <lastBuildDate>Tue, 04 Apr 2017 01:02:20 +0900</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 16 Apr 2017 23:13:58 +0900</pubDate>
+    <lastBuildDate>Sun, 16 Apr 2017 23:13:58 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -46,8 +46,8 @@
 
 </description>
         <pubDate>Sun, 02 Apr 2017 00:00:00 +0900</pubDate>
-        <link>hackurity01.github.io/2017/04/02/about-router-url/</link>
-        <guid isPermaLink="true">hackurity01.github.io/2017/04/02/about-router-url/</guid>
+        <link>http://localhost:4000/2017/04/02/about-router-url/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/04/02/about-router-url/</guid>
         
         
         <category>Angular2</category>
@@ -99,8 +99,8 @@
 &lt;p&gt;Pinterest cold-pressed selfies man bun twee williamsburg irony, art party snackwave tumeric knausgaard marfa polaroid chambray. PBR&amp;amp;B semiotics selvage brooklyn hexagon cray. Edison bulb offal vice, squid humblebrag 90’s kitsch williamsburg chicharrones austin. Poke 3 wolf moon selfies banh mi farm-to-table raclette. +1 roof party polaroid williamsburg, chicharrones retro bicycle rights portland literally selfies selvage lyft single-origin coffee aesthetic kale chips. Blog yr la croix four loko beard. Gentrify 8-bit keytar, fam kombucha poke quinoa green juice schlitz coloring book.&lt;/p&gt;
 </description>
         <pubDate>Fri, 19 Feb 2016 00:00:00 +0900</pubDate>
-        <link>hackurity01.github.io/2016/02/19/craft-beer/</link>
-        <guid isPermaLink="true">hackurity01.github.io/2016/02/19/craft-beer/</guid>
+        <link>http://localhost:4000/2016/02/19/craft-beer/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/02/19/craft-beer/</guid>
         
         
         <category>Juice</category>
