@@ -5,8 +5,8 @@
     <description>Hackurity's Blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 May 2017 22:54:08 +0900</pubDate>
-    <lastBuildDate>Mon, 15 May 2017 22:54:08 +0900</lastBuildDate>
+    <pubDate>Mon, 15 May 2017 22:57:05 +0900</pubDate>
+    <lastBuildDate>Mon, 15 May 2017 22:57:05 +0900</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -29,7 +29,7 @@ Namespace는 다음과 같이 설정할 수 있다.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h5&gt;*네임스페이스간의 종속 관계에 대해서 조금 찾아봤는데 path가 '/'인 경우에만 종속 관계를 갖는 것 같다. (사실 잘 모르겠다)
+&lt;h5&gt;*네임스페이스간의 종속 관계에 대해서 조금 찾아봤는데 path가 '/'인 경우에만 종속 관계를 갖는 것 같다. (사실 잘 모르겠다)&lt;br /&gt;
 참고 : https://github.com/socketio/socket.io/issues/2124
 &lt;/h5&gt;
 &lt;p&gt;&lt;br /&gt;
