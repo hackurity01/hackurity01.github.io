@@ -6,8 +6,8 @@ categories:
   - socket.io
   - node.js
 description: 
-image: https://unsplash.it/2000/1200?random
-image-sm: https://unsplash.it/500/300?random
+image: https://unsplash.it/800/600?image=1
+image-sm: https://unsplash.it/500/300?image=1
 ---
 <a href="https://socket.io/">socket.io</a>는 서버와 클라이언트가 양방향 통신을 할 수 있도록 도와주는 웹소켓 API의 하나로써, 넓은 브라우저 지원성과 편리한 사용성 때문에 node.js와 함께 널리 사용되고 있다.
 

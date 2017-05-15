@@ -5,8 +5,8 @@ date: 2017-04-02
 categories:
   - Angular2
 description: 
-image: https://unsplash.it/2000/1200?random
-image-sm: https://unsplash.it/500/300?random
+image: https://unsplash.it/800/600?image=0
+image-sm: https://unsplash.it/500/300?image=0
 ---
 router.url을 출력했는데 항상 / 값만 나오는 경우가 있다.
 
