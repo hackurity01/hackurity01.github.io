@@ -27,7 +27,7 @@ Namespace는 다음과 같이 설정할 수 있다.
 const io = IO(server, {path: '/namespace_A'});
 ```
 
-<h5>*네임스페이스간의 종속 관계에 대해서 조금 찾아봤는데 path가 '/'인 경우에만 종속 관계를 갖는 것 같다. (사실 잘 모르겠다)
+<h5>*네임스페이스간의 종속 관계에 대해서 조금 찾아봤는데 path가 '/'인 경우에만 종속 관계를 갖는 것 같다. (사실 잘 모르겠다)<br>
 참고 : https://github.com/socketio/socket.io/issues/2124
 </h5>
 <br>
