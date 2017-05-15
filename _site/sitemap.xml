@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/2017/04/02/about-router-url/</loc>
-<lastmod>2017-04-02T00:00:00+09:00</lastmod>
+<loc>http://localhost:4000/2017/05/14/nodejs-socketio-concept/</loc>
+<lastmod>2017-05-14T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/2016/02/19/craft-beer/</loc>
-<lastmod>2016-02-19T00:00:00+09:00</lastmod>
+<loc>http://localhost:4000/2017/04/02/about-router-url/</loc>
+<lastmod>2017-04-02T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/archive/</loc>
@@ -15,9 +15,16 @@
 <loc>http://localhost:4000/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/category/juice/</loc>
+<loc>http://localhost:4000/category/angular2/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/category/angular2/</loc>
+<loc>http://localhost:4000/category/socket-io/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/category/node-js/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/test.html</loc>
+<lastmod>2017-04-16T23:39:30+09:00</lastmod>
 </url>
 </urlset>

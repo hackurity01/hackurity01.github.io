@@ -69,8 +69,10 @@
 
 <p>app.component.html에 다음과 같이 코드를 구성한 경우,</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;navigation&gt;&lt;/navigation&gt;</span>
-<span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span></code></pre></figure>
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;navigation&gt;&lt;/navigation&gt;</span>
+<span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span>
+</code></pre>
+</div>
 
 <p>navigation의 component에서 router.url을 사용하면 어느 페이지건 항상 결과값이 ‘/’ 값으로 나온다.</p>
 
@@ -82,11 +84,12 @@
 <p><br /></p>
 <h4>1. document.location.href 사용</h4>
 <p>document.location.href를 사용하여 직접 주소창의 문자열을 가져와서 검사하는 방법이다.</p>
-
-<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="k">if</span><span class="p">((</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">).</span><span class="nx">search</span><span class="p">(</span><span class="s1">'/myurl'</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
+<div class="language-typescript highlighter-rouge"><pre class="highlight"><code><span class="k">if</span><span class="p">((</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">).</span><span class="nx">search</span><span class="p">(</span><span class="s1">'/myurl'</span><span class="p">)</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'It\'s myurl'</span><span class="p">);</span>
 <span class="k">else</span> 
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'It is not myurl'</span><span class="p">);</span></code></pre></figure>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'It is not myurl'</span><span class="p">);</span>
+</code></pre>
+</div>
 
 <h4>2. router.events 사용</h4>
 <p>구글링을 하다가 우연히 알아낸 방법인데, (순수한)javascript 문법을 사용하는게 싫다면 사용해 볼만한 방법이다.</p>
@@ -125,15 +128,6 @@
 
 </article>
 
-
-  <section class="next">
-    <a class="next__link" href="/2016/02/19/craft-beer/" style="background-image: url('https://unsplash.it/2000/1200?image=1003');">
-      <div class="next__container">
-        <span>Read Next</span>
-        <h2>Craft Beer</h2>
-      </div>
-    </a>
-  </section>
 
 
     </main>

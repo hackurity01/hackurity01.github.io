@@ -12,10 +12,10 @@ router.url을 출력했는데 항상 / 값만 나오는 경우가 있다.
 
 app.component.html에 다음과 같이 코드를 구성한 경우,
 
-{% highlight html %}
+``` html
 <navigation></navigation>
 <router-outlet></router-outlet>
-{% endhighlight %}
+```
 
 navigation의 component에서 router.url을 사용하면 어느 페이지건 항상 결과값이 '/' 값으로 나온다.
 
@@ -27,12 +27,12 @@ navigation의 component에서 router.url을 사용하면 어느 페이지건 항
 <br>
 <h4>1. document.location.href 사용</h4>
 document.location.href를 사용하여 직접 주소창의 문자열을 가져와서 검사하는 방법이다.
-{% highlight typescript %}
+``` typescript
 if((document.location.href).search('/myurl') !== -1) 
   console.log('It\'s myurl');
 else 
   console.log('It is not myurl');
-{% endhighlight %}
+```
 
 <h4>2. router.events 사용</h4>
 구글링을 하다가 우연히 알아낸 방법인데, (순수한)javascript 문법을 사용하는게 싫다면 사용해 볼만한 방법이다.

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>socket.io의 기본 개념 및 구조 in nodejs | Hackurity</title>
+  <meta name="author" content="YuDongKyun">
+  <meta name="description" content="Hackurity's Blog">
+  <meta property="og:title" content="socket.io의 기본 개념 및 구조 in nodejs | Hackurity">
+  <meta property="og:url" content="http://localhost:4000/2017/05/14/nodejs-socketio-concept/">
+  <meta property="og:site_name" content="Hackurity">
+  <meta property="og:description" content="Hackurity's Blog">
+  <meta property="og:image" content="https://unsplash.it/2000/1200?random">
+  <meta property="og:type" content="blog">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="Hackurity's Blog">
+  <meta name="twitter:title" content="socket.io의 기본 개념 및 구조 in nodejs | Hackurity">
+  <meta name="twitter:url" content="http://localhost:4000/2017/05/14/nodejs-socketio-concept/">
+  <meta name="twitter:site" content="Hackurity">
+  <meta name="twitter:creator" content="@">
+  <meta name="twitter:domain" content="http://localhost:4000">
+  <meta property="twitter:image" content="https://unsplash.it/2000/1200?random">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|Lora|Space+Mono:700">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <link rel="alternate" type="application/rss+xml" title="Hackurity" href="http://localhost:4000/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/2017/05/14/nodejs-socketio-concept/">
+
+  
+</head>
+
+
+  <body>
+
+    <main>
+      <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="section-padding--lg mast rellax" data-rellax-speed="-4">
+    <a class="nav nav--white" href="/">
+      <i class="fa fa-lg fa-arrow-left"></i>
+      <span>Back to Posts</span>
+    </a>
+    <figure class="absolute-bg mast__img" style="background-image: url('https://unsplash.it/2000/1200?random');"></figure>
+    <div class="mast__container">
+      <span><time datetime="2017-05-14T00:00:00+09:00" itemprop="datePublished">May 14, 2017</time></span>
+      <h1 itemprop="name headline">socket.io의 기본 개념 및 구조 in nodejs</h1>
+      
+        <span>Posted in 
+          
+            <a class="nav--white" href="/category/socket-io">socket.io</a>, 
+          
+            <a class="nav--white" href="/category/node-js">node.js</a>
+          
+        </span>
+      
+      <span></span>
+    </div>
+  </header>
+
+  <section class="section-padding bg-grey" itemprop="articleBody">
+    <div class="post">
+      <p><a href="https://socket.io/">socket.io</a>는 서버와 클라이언트가 양방향 통신을 할 수 있도록 도와주는 웹소켓 API의 하나로써, 넓은 브라우저 지원성과 편리한 사용성 때문에 node.js와 함께 널리 사용되고 있다.</p>
+
+<p>이 글에서는 socket.io의 기본적인 구조와 이벤트 전송 흐름을 설명하려고 한다.
+<br /></p>
+<h2>1. socket.io의 구조</h2>
+
+<p>socket.io는 Namespace와 Room이라는 두 가지 방식으로 이벤트 전송의 도메인을 구분한다.</p>
+
+<p><br /></p>
+<h4>Namespace</h4>
+
+<p>Namespace는 path를 통해 소켓의 도메인을 구분하는 단위이다.
+Namespace는 다음과 같이 설정할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">io</span> <span class="o">=</span> <span class="nx">IO</span><span class="p">(</span><span class="nx">server</span><span class="p">,</span> <span class="p">{</span><span class="na">path</span><span class="p">:</span> <span class="s1">'/namespace_A'</span><span class="p">});</span>
+</code></pre>
+</div>
+
+<h5>*네임스페이스간의 종속 관계에 대해서 조금 찾아봤는데 path가 '/'인 경우에만 종속 관계를 갖는 것 같다. (사실 잘 모르겠다)
+참고 : https://github.com/socketio/socket.io/issues/2124
+</h5>
+<p><br />
+<br /></p>
+<h4>Room</h4>
+
+<p>Room은 네임스페이스의 안에서 소켓들을 구분하는 단위이다. 일종의 그룹이라고 생각하면 된다.
+특정 room에 들어가는 것과 나가는 코드는 다음과 같다.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">socket</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">'room1'</span><span class="p">);</span>
+<span class="err"></span><span class="nx">socket</span><span class="p">.</span><span class="nx">leave</span><span class="p">(</span><span class="s1">'roon1'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><img style="margin-bottom:0" src="/assets/image/2017-05-14-nodejs-socketio-concept-img1.png" width="80%" /></p>
+<center>&lt;소켓 connection 구조(Namespace, Room)&gt;</center>
+<p><br />
+<br /></p>
+<h3>2. Socket.io 이벤트 전송 흐름</h3>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1) Socket의 Namespace와 함께 소켓 인스턴스를 생성한다.</span>
+<span class="kr">const</span> <span class="nx">io</span> <span class="o">=</span> <span class="nx">IO</span><span class="p">(</span><span class="nx">server</span><span class="p">,</span> <span class="p">{</span><span class="na">path</span><span class="p">:</span> <span class="s1">'/namespace_A'</span><span class="p">});</span>
+
+<span class="c1">// 2) Socket connection </span>
+<span class="nx">io</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'connected'</span><span class="p">);</span>
+
+	<span class="c1">// 3) connection의 콜백함수 안에 이벤트 등록</span>
+	<span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'join'</span><span class="p">,</span> <span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Someone joined'</span><span class="p">);</span>
+        <span class="nx">socket</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">'room1'</span><span class="p">);</span>
+
+		<span class="c1">// 나를 포함한 같은 Namespace 안의 소켓에게 이벤트 전송 </span>
+		<span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'event name'</span><span class="p">,</span> <span class="nx">message</span><span class="p">);</span>
+
+		<span class="c1">// 나를 제외한 같은 Namespace 안의 소켓에게 이벤트 전송 </span>
+		<span class="nx">socket</span><span class="p">.</span><span class="nx">broadcast</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'event name'</span><span class="p">,</span> <span class="nx">message</span><span class="p">);</span>
+
+        <span class="c1">// 나를 포함한 'room1' Room 안의 소켓에게 이벤트 전송</span>
+        <span class="nx">io</span><span class="p">.</span><span class="nx">sockets</span><span class="p">.</span><span class="k">in</span><span class="p">(</span><span class="s1">'room1'</span><span class="p">).</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'event name'</span><span class="p">,</span> <span class="nx">message</span><span class="p">);</span>
+
+        <span class="c1">// 나를 제외한 'room1' Room 안의 소켓에게 이벤트 전송</span>
+        <span class="nx">socket</span><span class="p">.</span><span class="nx">broadcast</span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="s1">'roon name'</span><span class="p">).</span><span class="nx">emit</span><span class="p">(</span><span class="s1">'event name'</span><span class="p">,</span> <span class="nx">message</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+    </div>
+  </section>
+
+  <section class="profile">
+    <div class="profile__card">
+      <div class="profile__img">
+        <figure class="absolute-bg" style="background-image: url('');"></figure>
+      </div>
+      <div class="profile__container">
+        <p></p>
+        
+          <ul class="profile__social">
+            
+              <li><a class="fa fa-lg fa-envelope-o" href="mailto:hackurity01@gmail.com"></a></li>
+            
+            
+              <li><a class="fa fa-lg fa-github" href="" target="_blank"></a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </section>
+
+</article>
+
+
+  <section class="next">
+    <a class="next__link" href="/2017/04/02/about-router-url/" style="background-image: url('https://unsplash.it/2000/1200?random');">
+      <div class="next__container">
+        <span>Read Next</span>
+        <h2>navication에서 router.url 사용시 / 만 나오는 문제</h2>
+      </div>
+    </a>
+  </section>
+
+
+    </main>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.0.0/rellax.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script type="text/javascript" src="/assets/js/app.js"></script>
+
+
+  </body>
+
+</html>
