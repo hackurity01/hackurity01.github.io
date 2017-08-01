@@ -21,7 +21,16 @@ window.addEventListener('deviceorientation', function(event2) {
     "beta：" + Math.round(beta * 10) / 10 + "<br>" +
     "gamma：" + Math.round(gamma * 10) / 10;
 }, true);
+
+  window.addEventListener("load", function(){
+    document.getElementById("vibrate").addEventListener("click", function(){
+     navigator.mozVibrate(3000);
+     //navigator.vibrate(3000);
+    }, true);
+   }, true);
 </script>
 
 <div id="result1"></div>
 <div id="result2"></div>
+
+   <input type="button" id="vibrate" value="진동비율">
