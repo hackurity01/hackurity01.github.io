@@ -1,4 +1,5 @@
 <script>
+/*
   window.addEventListener("devicemotion", function(event1) {
     var x = event1.accelerationIncludingGravity.x;
     var y = event1.accelerationIncludingGravity.y;
@@ -10,7 +11,9 @@
       "Y：" + Math.round(y * 10) / 10 + "<br>" +
       "Z：" + Math.round(z * 10) / 10;
   }, true);
+*/
 
+/*
 window.addEventListener('deviceorientation', function(event2) {
   var alpha = event2.alpha;
   var beta = event2.beta;
@@ -21,13 +24,18 @@ window.addEventListener('deviceorientation', function(event2) {
     "beta：" + Math.round(beta * 10) / 10 + "<br>" +
     "gamma：" + Math.round(gamma * 10) / 10;
 }, true);
+*/
 
-  window.addEventListener("load", function(){
     document.getElementById("vibrate").addEventListener("click", function(){
-     navigator.mozVibrate(3000);
-     //navigator.vibrate(3000);
+	    navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+
+	if (navigator.vibrate) {
+		navigator.vibrate(1000);
+	}
+     
+    //navigator.vibrate(3000);
+    console.log('clicked');
     }, true);
-   }, true);
 </script>
 
 <div id="result1"></div>
