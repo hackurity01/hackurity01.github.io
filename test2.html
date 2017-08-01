@@ -1,5 +1,4 @@
 <script>
-/*
   window.addEventListener("devicemotion", function(event1) {
     var x = event1.accelerationIncludingGravity.x;
     var y = event1.accelerationIncludingGravity.y;
@@ -7,38 +6,25 @@
 
     var result1 = document.getElementById("result1");
     result1.innerHTML =
-      "X：" + Math.round(x * 10) / 10 + "<br>" +
-      "Y：" + Math.round(y * 10) / 10 + "<br>" +
-      "Z：" + Math.round(z * 10) / 10;
+      "X：" + Math.round(x * 1000) / 1000 + "<br>" +
+      "Y：" + Math.round(y * 1000) / 1000 + "<br>" +
+      "Z：" + Math.round(z * 1000) / 1000;
   }, true);
-*/
 
-/*
 window.addEventListener('deviceorientation', function(event2) {
   var alpha = event2.alpha;
   var beta = event2.beta;
   var gamma = event2.gamma;
 
   result2.innerHTML =
-    "alpha：" + Math.round(alpha * 10) / 10 + "<br>" +
-    "beta：" + Math.round(beta * 10) / 10 + "<br>" +
-    "gamma：" + Math.round(gamma * 10) / 10;
+    "alpha：" + Math.round(alpha * 100) / 100 + "<br>" +
+    "beta：" + Math.round(beta * 100) / 100 + "<br>" +
+    "gamma：" + Math.round(gamma * 100) / 100;
 }, true);
-*/
 
-    function vibe(){
-    	console.log('clicked');
-	    navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
 
-		if (navigator.vibrate) {
-			navigator.vibrate(1000);
-		}
-	     
-	    //navigator.vibrate(3000);
-    }
 </script>
-
-<div id="result1"></div>
-<div id="result2"></div>
-
-   <input type="button" onclick="vibe()" value="진동비율">
+<div style="font-size: 3em;">
+	<div id="result1"></div>
+	<div id="result2"></div>
+</div>
