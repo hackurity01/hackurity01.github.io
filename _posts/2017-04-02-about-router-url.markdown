@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "navication에서 router.url 사용시 / 만 나오는 문제"
+title: "navigation에서 router.url 사용시 / 만 나오는 문제"
 date: 2017-04-02
 categories:
   - Angular2
